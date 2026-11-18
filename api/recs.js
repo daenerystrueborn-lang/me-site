@@ -56,7 +56,7 @@ const str = (v, n) => String(v == null ? "" : v).trim().slice(0, n);
 module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "no-store");
   if (!REDIS_URL || !REDIS_TOKEN || !ADMIN_PASSWORD) {
-    return res.status(500).json({ error: "server not configured" });
+    return res.status(503).json({ error: "server not configured" });
   }
   try {
     if (req.method === "GET") {
