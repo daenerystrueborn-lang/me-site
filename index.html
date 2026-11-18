@@ -58,6 +58,7 @@ li{background:var(--card);border-radius:999px;padding:6px 14px;font-size:.95rem}
 .links a:hover{transform:translateY(-2px)}
 a:focus-visible,button:focus-visible{outline:3px solid var(--banner1);outline-offset:3px}
 footer{margin:36px 0 12px;text-align:center;color:var(--muted);font-size:.9rem}
+footer a{color:inherit;text-underline-offset:.2em}
 .theme{position:absolute;top:12px;right:12px;border:0;border-radius:999px;padding:8px 14px;
   background:rgba(255,255,255,.9);color:#000000;font:inherit;font-weight:600;cursor:pointer}
 
@@ -103,31 +104,17 @@ footer{margin:36px 0 12px;text-align:center;color:var(--muted);font-size:.9rem}
 .rm-top h2{margin:0;font-size:1.5rem;letter-spacing:-.02em}
 .rm-x{border:0;background:var(--line);color:var(--ink);width:36px;height:36px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;flex:none}
 .rm-x:hover{background:var(--pop);color:#000}
-.rm-tabs{display:inline-flex;background:#000;border:2px solid var(--line);border-radius:999px;padding:4px;margin-bottom:12px}
-.rm-tabs button{border:0;background:none;padding:7px 16px;border-radius:999px;font:inherit;font-weight:600;cursor:pointer;color:var(--muted)}
-.rm-tabs button[aria-pressed="true"]{background:var(--pop);color:#000}
 .rm-field{display:block;width:100%;background:#000;border:2px solid var(--line);border-radius:14px;padding:11px 14px;margin-bottom:10px;font:inherit;color:var(--ink)}
 .rm-field:focus{border-color:var(--pop);outline:none}
-.rm-search{border-radius:999px;padding:13px 20px;font-size:1.05rem}
-textarea.rm-field{resize:vertical;min-height:80px}
 .rm-status{min-height:1.5em;margin:4px 4px 0;color:var(--muted);font-size:.92rem}
 .rm-status.err{color:#ff8a8a}
-.rm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:12px;margin-top:8px}
-.rm-item{background:none;border:0;padding:0;text-align:left;cursor:pointer;color:inherit;font:inherit}
 .rm-art{aspect-ratio:2/3;border-radius:10px;border:2px solid var(--line);background:#000;overflow:hidden;display:grid;place-items:center;color:var(--muted);font-weight:800;font-size:1.8rem}
 .rm-art img{width:100%;height:100%;object-fit:cover;display:block}
-.rm-item:hover .rm-art{border-color:var(--pop)}
-.rm-item .t{margin:5px 2px 0;font-size:.8rem;line-height:1.25;font-weight:600}
-.rm-item .m{margin:0 2px;font-size:.72rem;color:var(--muted)}
-.rm-send{margin-top:16px;border:2px solid var(--pop);border-radius:18px;padding:16px;display:grid;grid-template-columns:84px 1fr;gap:14px}
-.rm-send[hidden]{display:none}
-.rm-send h3{margin:0;font-size:1.15rem;font-weight:800;letter-spacing:-.01em}
-.rm-send .meta{margin:0 0 10px;color:var(--muted);font-size:.85rem}
 .rm-row{display:flex;gap:10px;flex-wrap:wrap}
 .rm-btn{border:0;border-radius:999px;padding:10px 20px;font:inherit;font-weight:700;cursor:pointer;background:var(--pop);color:#000}
 .rm-btn.ghost{background:none;color:var(--muted);border:2px solid var(--line)}
 .rm-btn.small{padding:5px 12px;font-size:.8rem}
-.rm-btn[disabled]{opacity:.5;cursor:default}
+.rm-btn:disabled,.rm-back:disabled{opacity:.5;cursor:default}
 .rm-pass{max-width:380px}
 .rm-rec{padding:16px 0;border-bottom:1px solid var(--line)}
 .rm-rec-head{display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center}
@@ -140,7 +127,45 @@ textarea.rm-field{resize:vertical;min-height:80px}
 .rm-entry p{margin:0;font-size:.92rem}
 .rm-entry .who{color:var(--muted);font-size:.8rem;margin-bottom:2px}
 .rm-empty{color:var(--muted);padding:16px 0}
-@media (max-width:520px){.rm-send{grid-template-columns:70px 1fr}.rm-entry{margin-left:0}}
+@media (max-width:520px){.rm-entry{margin-left:0}}
+
+/* Visitor recommendations: browse first, then write on a clean sheet. */
+.rm-visitor{max-width:520px;max-height:88dvh;overscroll-behavior:contain;border:1px solid #353538;box-shadow:0 24px 80px #0009}
+.rm-visitor [hidden]{display:none}
+.rm-visitor .rm-in{padding:clamp(16px,4vw,26px)}
+.rm-visitor .rm-top{gap:10px;margin-bottom:20px}
+.rm-visitor .rm-top h2{flex:1;min-width:0;font-size:clamp(1.25rem,4vw,1.5rem);line-height:1.2}
+.rm-visitor .rm-x,.rm-back{display:grid;place-items:center;flex:none;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:#202022;color:var(--ink);cursor:pointer}
+.rm-visitor .rm-x:hover,.rm-back:hover{background:#333336}
+.rm-back svg,.rm-query svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rm-tabs{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:#080808}
+.rm-tabs button{border:0;border-radius:999px;padding:7px 15px;background:none;color:var(--muted);font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}
+.rm-tabs button[aria-pressed="true"]{background:var(--pop);color:#000}
+.rm-query{position:relative;margin-top:14px}
+.rm-query svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.rm-visitor .rm-field{min-width:0;margin:0;padding:12px 14px;border:1px solid #353538;border-radius:12px;background:#080808;line-height:1.4}
+.rm-visitor .rm-field:focus{border-color:#d1d1d5;box-shadow:0 0 0 1px #d1d1d5}
+.rm-visitor .rm-search{padding-left:42px}
+.rm-visitor .rm-status{min-height:0;margin:0;line-height:1.4;overflow-wrap:anywhere}
+#rmBrowse .rm-status:not(:empty){margin-top:12px}
+.rm-results:not(:empty){margin-top:12px}
+.rm-item{display:grid;grid-template-columns:42px minmax(0,1fr) 12px;align-items:center;gap:14px;width:100%;padding:10px 5px;border:0;border-bottom:1px solid var(--line);background:none;color:inherit;text-align:left;font:inherit;cursor:pointer}
+.rm-item:last-child{border-bottom:0}
+.rm-item:hover,.rm-item:focus-visible{background:#181819}
+.rm-item::after{content:"";width:7px;height:7px;border:solid #858590;border-width:1.5px 1.5px 0 0;transform:rotate(45deg)}
+.rm-item .rm-art,.rm-choice .rm-art{border-width:1px;border-radius:6px;font-size:1.15rem}
+.rm-item strong,.rm-item small{display:block;overflow-wrap:anywhere}
+.rm-item strong{font-size:.98rem;line-height:1.3;font-weight:600}
+.rm-item small,.rm-choice .meta{margin:4px 0 0;color:var(--muted);font-size:.83rem}
+.rm-send{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.rm-choice{display:grid;grid-template-columns:50px minmax(0,1fr);align-items:center;gap:14px;padding:12px 14px;background:#181819;border-radius:14px}
+.rm-choice h3{margin:0;overflow-wrap:anywhere;font-size:1.15rem;line-height:1.25;letter-spacing:-.01em}
+.rm-control{display:grid;gap:6px;min-width:0}
+.rm-control>span{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:.92rem;font-weight:600}
+.rm-control small{color:var(--muted);font-size:.8rem;font-weight:400}
+.rm-control textarea{resize:vertical;min-height:84px}
+.rm-send .rm-btn{width:100%;min-height:46px;padding:11px 14px;line-height:1.4}
+.rm-send .rm-status:not(:empty){margin-bottom:12px}
 /* ---- peak black UI ---- */
 body{background:radial-gradient(70% 38% at 50% 0%,rgba(255,255,255,.07),transparent 70%) no-repeat,#000;background-attachment:fixed}
 .wrap{padding-bottom:48px}
@@ -164,7 +189,6 @@ section>h2[style]::after{background:linear-gradient(270deg,transparent,var(--lin
 .cover .art{box-shadow:0 12px 28px rgba(0,0,0,.7);transition:transform .2s,border-color .2s}
 .cover:hover .art{transform:translateY(-4px);border-color:rgba(255,255,255,.5)}
 .cover.first .art{box-shadow:0 14px 34px rgba(0,0,0,.8),0 0 30px rgba(255,255,255,.1)}
-.rm-credit{margin:14px 2px 0;color:var(--muted);font-size:.72rem;line-height:1.4}
 @media (prefers-reduced-motion:reduce){.box:hover,.cover:hover .art{transform:none}}
 /* ---- favorites + recommend redesign ---- */
 .favgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
@@ -505,32 +529,49 @@ html.sliding .eq i,html.sliding .vinyl .disc,html.sliding .steam i,html.sliding 
     </button>
   </section>
 
+  <footer><a href="credits.html">Credits</a></footer>
 </div>
 
-<dialog id="rmDlg" class="rm-dlg" aria-labelledby="rmTitle">
+<dialog id="rmDlg" class="rm-dlg rm-visitor" aria-labelledby="rmTitle">
   <div class="rm-in">
-    <div class="rm-top"><h2 id="rmTitle">Recommend me something</h2><button type="button" class="rm-x" data-close aria-label="Close">&times;</button></div>
-    <div class="rm-tabs" role="group" aria-label="What to search">
-      <button type="button" data-mode="anime" aria-pressed="true">Anime</button>
-      <button type="button" data-mode="movie" aria-pressed="false">Movies and shows</button>
+    <div class="rm-top">
+      <button id="rmCancel" type="button" class="rm-back" aria-label="Back to results" title="Back to results" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+      <h2 id="rmTitle" tabindex="-1">Recommend a title</h2>
+      <button type="button" class="rm-x" data-close aria-label="Close">&times;</button>
     </div>
-    <input id="rmQ" class="rm-field rm-search" type="search" placeholder="Search for an anime" autocomplete="off" aria-label="Search">
-    <div id="rmStatus" class="rm-status" role="status" aria-live="polite"></div>
-    <div id="rmResults" class="rm-grid"></div>
+    <div id="rmBrowse">
+      <div class="rm-tabs" role="group" aria-label="What to search">
+        <button type="button" data-mode="anime" aria-pressed="true">Anime</button>
+        <button type="button" data-mode="movie" aria-pressed="false">Movies &amp; TV</button>
+      </div>
+      <div class="rm-query">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg>
+        <input id="rmQ" class="rm-field rm-search" type="search" placeholder="Search anime" autocomplete="off" aria-label="Search titles">
+      </div>
+      <div id="rmStatus" class="rm-status" role="status" aria-live="polite"></div>
+      <div id="rmResults" class="rm-results"></div>
+    </div>
     <form id="rmForm" class="rm-send" hidden>
-      <div class="rm-art" id="rmPickArt"></div>
-      <div>
-        <h3 id="rmPickTitle"></h3>
-        <p class="meta" id="rmPickMeta"></p>
-        <input id="rmName" class="rm-field" maxlength="40" placeholder="Your name (optional)" autocomplete="nickname">
-        <textarea id="rmNote" class="rm-field" maxlength="300" placeholder="Add details: why should I watch it, which season to start with, where to watch..."></textarea>
-        <div class="rm-row">
-          <button class="rm-btn" id="rmSubmit" type="submit">Send recommendation</button>
-          <button class="rm-btn ghost" id="rmCancel" type="button">Cancel</button>
+      <div class="rm-choice">
+        <div class="rm-art" id="rmPickArt" aria-hidden="true"></div>
+        <div>
+          <h3 id="rmPickTitle" tabindex="-1"></h3>
+          <p class="meta" id="rmPickMeta"></p>
         </div>
       </div>
+      <label class="rm-control" for="rmName">
+        <span>From <small>Optional</small></span>
+        <input id="rmName" class="rm-field" maxlength="40" placeholder="Your name" autocomplete="nickname">
+      </label>
+      <label class="rm-control" for="rmNote">
+        <span>Note <small>Optional</small></span>
+        <textarea id="rmNote" class="rm-field" rows="3" maxlength="300" placeholder="Why should I watch it?"></textarea>
+      </label>
+      <div>
+        <div id="rmSendError" class="rm-status err" role="status" aria-live="polite"></div>
+        <button class="rm-btn" id="rmSubmit" type="submit">Send recommendation</button>
+      </div>
     </form>
-    <p class="rm-credit">Anime data from AniList. This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
   </div>
 </dialog>
 
@@ -597,7 +638,7 @@ const RM_CONFIG = {
   /* ---- helpers ---- */
   function status(msg, err) { const s = $("rmStatus"); s.textContent = msg || ""; s.className = "rm-status" + (err ? " err" : ""); }
   function art(it) {
-    const d = document.createElement("div"); d.className = "rm-art";
+    const d = document.createElement("span"); d.className = "rm-art"; d.setAttribute("aria-hidden", "true");
     if (it.image) { const i = document.createElement("img"); i.src = it.image; i.alt = ""; i.loading = "lazy"; d.appendChild(i); }
     else d.textContent = (it.title || "?").charAt(0).toUpperCase();
     return d;
@@ -609,10 +650,11 @@ const RM_CONFIG = {
     const box = $("rmResults"); box.replaceChildren();
     items.forEach((it) => {
       const b = document.createElement("button"); b.type = "button"; b.className = "rm-item";
-      const t = document.createElement("p"); t.className = "t"; t.textContent = it.title;
-      const m = document.createElement("p"); m.className = "m"; m.textContent = meta(it);
-      b.append(art(it), t, m);
-      b.addEventListener("click", () => pick(it));
+      const copy = document.createElement("span");
+      const t = document.createElement("strong"); t.textContent = it.title;
+      const m = document.createElement("small"); m.textContent = meta(it);
+      copy.append(t, m); b.append(art(it), copy);
+      b.addEventListener("click", () => pick(it, b));
       box.appendChild(b);
     });
   }
@@ -630,15 +672,25 @@ const RM_CONFIG = {
       $("rmResults").replaceChildren(); status(e.message || "Search failed. Try again.", true);
     }
   }
-  function pick(it) {
-    S.picked = it;
+  const browseTitle = $("rmTitle").textContent;
+  let pickedFrom;
+  function pick(it, trigger) {
+    S.picked = it; pickedFrom = trigger;
     $("rmPickArt").replaceChildren(...art(it).childNodes);
     $("rmPickTitle").textContent = it.title; $("rmPickMeta").textContent = meta(it);
-    $("rmForm").hidden = false;
-    $("rmForm").scrollIntoView({ behavior: "smooth", block: "nearest" });
-    $("rmName").focus({ preventScroll: true });
+    $("rmSendError").textContent = "";
+    $("rmTitle").textContent = "Your pick";
+    $("rmBrowse").hidden = true; $("rmForm").hidden = false; $("rmCancel").hidden = false;
+    $("rmDlg").scrollTop = 0;
+    $("rmPickTitle").focus({ preventScroll: true });
   }
-  function closePick() { S.picked = null; $("rmForm").hidden = true; }
+  function showBrowse(restoreFocus = false) {
+    S.picked = null;
+    $("rmTitle").textContent = browseTitle;
+    $("rmForm").hidden = true; $("rmCancel").hidden = true; $("rmBrowse").hidden = false;
+    if (restoreFocus) (pickedFrom?.isConnected ? pickedFrom : $("rmQ")).focus();
+    pickedFrom = null;
+  }
 
   async function saveRec(rec) {
     if (api) {
@@ -651,28 +703,35 @@ const RM_CONFIG = {
     try { localStorage.setItem("recs", JSON.stringify(all)); } catch (e) { throw new Error("Could not save in this browser."); }
   }
 
-  $("rmOpen").addEventListener("click", () => { $("rmDlg").showModal(); $("rmQ").focus(); });
+  $("rmOpen").addEventListener("click", () => {
+    $("rmDlg").showModal(); (S.picked ? $("rmPickTitle") : $("rmQ")).focus();
+  });
   $("rmQ").addEventListener("input", () => { clearTimeout(S.timer); S.timer = setTimeout(runSearch, 350); });
   document.querySelectorAll("#rmDlg .rm-tabs button").forEach((b) => b.addEventListener("click", () => {
     S.mode = b.dataset.mode;
     document.querySelectorAll("#rmDlg .rm-tabs button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
-    $("rmQ").placeholder = S.mode === "anime" ? "Search for an anime" : "Search for a movie or show";
-    $("rmResults").replaceChildren(); closePick(); runSearch();
+    $("rmQ").placeholder = S.mode === "anime" ? "Search anime" : "Search movies and TV";
+    $("rmResults").replaceChildren(); runSearch();
   }));
-  $("rmCancel").addEventListener("click", closePick);
+  $("rmCancel").addEventListener("click", () => showBrowse(true));
   $("rmForm").addEventListener("submit", async (e) => {
-    e.preventDefault(); if (!S.picked) return;
-    const btn = $("rmSubmit"); btn.disabled = true;
+    e.preventDefault();
+    const btn = $("rmSubmit");
+    if (!S.picked || btn.disabled) return;
+    btn.disabled = true; $("rmCancel").disabled = true;
+    btn.textContent = "Sending…"; $("rmSendError").textContent = "";
     const p = S.picked;
     const rec = { key: p.key, title: p.title, year: String(p.year || ""), type: p.type, image: p.image,
       name: $("rmName").value.trim().slice(0, 40), note: $("rmNote").value.trim().slice(0, 300), at: Date.now() };
     try {
       await saveRec(rec);
+      clearTimeout(S.timer); S.ctrl?.abort();
       $("rmName").value = ""; $("rmNote").value = "";
-      closePick(); $("rmResults").replaceChildren(); $("rmQ").value = "";
+      showBrowse(); $("rmResults").replaceChildren(); $("rmQ").value = "";
       status("Sent! Thanks for the recommendation.");
-    } catch (err) { status(err.message || "Could not send. Try again.", true); }
-    finally { btn.disabled = false; }
+      if ($("rmDlg").open) $("rmTitle").focus();
+    } catch (err) { $("rmSendError").textContent = err.message || "Could not send. Try again."; }
+    finally { btn.disabled = false; $("rmCancel").disabled = false; btn.textContent = "Send recommendation"; }
   });
 
   /* ---- close buttons and backdrop click ---- */
